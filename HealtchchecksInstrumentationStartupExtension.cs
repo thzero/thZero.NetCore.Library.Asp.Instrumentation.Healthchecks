@@ -20,6 +20,7 @@ limitations under the License.
 using System;
 
 using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Diagnostics.HealthChecks;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Routing;
@@ -42,7 +43,7 @@ namespace thZero.AspNetCore
 
         public virtual void ConfigureInitializePost(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory, IServiceProvider svp)
         {
-            app.UseHealthChecks(Route);
+            ConfigureInitializeHealthChecks(app);
         }
 
         public virtual void ConfigureInitializePre(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory, IServiceProvider svp)
@@ -120,8 +121,28 @@ namespace thZero.AspNetCore
         #endregion
 
         #region Protected Methods
+        protected virtual void ConfigureInitializeHealthChecks(IApplicationBuilder app)
+        {
+            UseHealthCheck(app, Route);
+        }
+
         protected virtual void ConfigureServicesHealthChecks(IHealthChecksBuilder builder)
         {
+        }
+
+        protected void UseHealthCheck(IApplicationBuilder app, string routeFragment = null, HealthCheckOptions options = null, bool useRoute = true)
+        {
+            string route = (useRoute ? Route : string.Empty);
+            if (!string.IsNullOrEmpty(routeFragment))
+            {
+                routeFragment = (!routeFragment.StartsWith("/") ? "/" : string.Empty) + routeFragment;
+                route = route + routeFragment;
+            }
+
+            if (string.IsNullOrEmpty(route))
+                throw new Exception("Invalid health check route.");
+
+            app.UseHealthChecks(route, options);
         }
         #endregion
 
