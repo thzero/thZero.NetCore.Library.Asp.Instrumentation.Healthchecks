@@ -38,9 +38,9 @@ namespace thZero.AspNetCore
             ConfigureInitializeHealthChecks(app);
         }
 
-        public override void ConfigureServicesInitializeMvcPre(IServiceCollection services, IConfiguration configuration)
+        public override void ConfigureServicesInitializeMvcPre(IServiceCollection services, IHostingEnvironment env, IConfiguration configuration)
         {
-            base.ConfigureServicesInitializeMvcPre(services, configuration);
+            base.ConfigureServicesInitializeMvcPre(services, env, configuration);
 
             ConfigureServicesHealthChecks(services.AddHealthChecks());
         }
