@@ -28,7 +28,7 @@ using Microsoft.Extensions.Logging;
 
 namespace thZero.AspNetCore
 {
-    public class HealtchchecksInstrumentationStartupExtension : BaseStartupExtension
+    public class HealthChecksInstrumentationStartupExtension : BaseStartupExtension
     {
         #region Public Methods
         public override void ConfigureInitializePost(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory, IServiceProvider svp)

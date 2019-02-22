@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28307.136
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "thZero.NetCore.Library.Asp.Instrumentation.Healthchecks", "thZero.NetCore.Library.Asp.Instrumentation.Healthchecks.csproj", "{8826310B-63A0-4091-9F0A-3B0104DBF20E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "thZero.NetCore.Library.Asp.Instrumentation.HealthChecks", "thZero.NetCore.Library.Asp.Instrumentation.HealthChecks.csproj", "{8826310B-63A0-4091-9F0A-3B0104DBF20E}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "thZero.NetCore.Library", "..\thZero.NetCore.Library\thZero.NetCore.Library.csproj", "{C6A9CF76-A3F6-4E04-B0A9-1CB61AD6B70E}"
 EndProject
