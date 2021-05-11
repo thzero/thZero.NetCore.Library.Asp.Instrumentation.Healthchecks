@@ -1,6 +1,6 @@
 ﻿/* ------------------------------------------------------------------------- *
 thZero.NetCore.Library.Asp.Instrumentation.Healthchecks
-Copyright (C) 2016-2019 thZero.com
+Copyright (C) 2016-2021 thZero.com
 
 <development [at] thzero [dot] com>
 
@@ -31,14 +31,14 @@ namespace thZero.AspNetCore
     public class HealthChecksInstrumentationStartupExtension : BaseStartupExtension
     {
         #region Public Methods
-        public override void ConfigureInitializePost(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory, IServiceProvider svp)
+        public override void ConfigureInitializePost(IApplicationBuilder app, IWebHostEnvironment env, ILoggerFactory loggerFactory, IServiceProvider svp)
         {
             base.ConfigureInitializePost(app, env, loggerFactory, svp);
 
             ConfigureInitializeHealthChecks(app);
         }
 
-        public override void ConfigureServicesInitializeMvcPre(IServiceCollection services, IHostingEnvironment env, IConfiguration configuration)
+        public override void ConfigureServicesInitializeMvcPre(IServiceCollection services, IWebHostEnvironment env, IConfiguration configuration)
         {
             base.ConfigureServicesInitializeMvcPre(services, env, configuration);
 
