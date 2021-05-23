@@ -17,14 +17,13 @@ See the License for the specific language governing permissions and
 limitations under the License.
  * ------------------------------------------------------------------------- */
 
-using System;
-
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Diagnostics.HealthChecks;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
+using System;
 
 namespace thZero.AspNetCore
 {
@@ -62,7 +61,7 @@ namespace thZero.AspNetCore
             if (!string.IsNullOrEmpty(routeFragment))
             {
                 routeFragment = (!routeFragment.StartsWith("/") ? "/" : string.Empty) + routeFragment;
-                route = route + routeFragment;
+                route += routeFragment;
             }
 
             if (string.IsNullOrEmpty(route))
