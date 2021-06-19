@@ -17,13 +17,14 @@ See the License for the specific language governing permissions and
 limitations under the License.
  * ------------------------------------------------------------------------- */
 
+using System;
+
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Diagnostics.HealthChecks;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
-using System;
 
 namespace thZero.AspNetCore
 {
@@ -65,7 +66,7 @@ namespace thZero.AspNetCore
             }
 
             if (string.IsNullOrEmpty(route))
-                throw new Exception("Invalid health check route.");
+                throw new InvalidHealthCheckRouteException();
 
             if (options != null)
                 app.UseHealthChecks(route, options);
@@ -77,5 +78,12 @@ namespace thZero.AspNetCore
         #region Protected Properties
         protected string Route { get; set; } = "/diagnostics/health";
         #endregion
+    }
+
+    public class InvalidHealthCheckRouteException : Exception
+    {
+        public InvalidHealthCheckRouteException() : base("Invalid health check route.")
+        {
+        }
     }
 }
